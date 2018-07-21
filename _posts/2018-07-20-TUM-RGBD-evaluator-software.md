@@ -29,7 +29,7 @@ User's will be able to access various sensor's data according to their need.
 **Sensors available:** - 'color_img' , 'depth_img', 'orientation' , 'accelerometer' , 'scan' (laser scan) .
 
  This is how the Rosbag file looks when displayed in the ```rqt_bag``` (ROS package) .
-![](https://github.com/.... )
+![](https://dattadebrup.github.io/assets/images/rosbag_image.png)
 
 Let's assume that the user only wants to work with the Color(RGB) image and Depth image. Then the API for getting the sensor datas will be:
 ```data = self.getReadings( 'color_img' , 'depth_img' )```
