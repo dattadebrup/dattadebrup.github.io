@@ -76,14 +76,18 @@ For example in a particular call ```data = self.getReadings('stream')``` the 'sc
 * The Depth image is provided in 32-bit floating point precision.
 * The laser scan data is provided in numpy array format.
 * Orientation data can be accessed as follows:
+
 	```qz = data.orientation['qz']```
+
     ```qw = data.orientation['qw']```
+    
     'qx' and 'qy' are essentially zero(since it is a 2D odometry).
 * Accelerometer data can be accessed as follows: 
+
 	```ax = data.accelerometer['x']```
+
 	```ay = data.accelerometer['y']```
+
 	'ay' is essentially zero.
 * The Timestamps are floating point numbers.
 * For more details refer to the original page of the TUM RGBD dataset <https://vision.in.tum.de/data/datasets/rgbd-dataset/file_formats#ros_bag>.
-
-test
