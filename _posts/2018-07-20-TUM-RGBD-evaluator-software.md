@@ -5,7 +5,6 @@ author: debrup
 categories: [ RGBD , evaluator ]
 image: assets/images/evaluator.png
 featured: true
-comments:true
 ---
 
 I made this evaluator software while I was starting off to learn and write an visual odometry algorithm from scratch. So I was given the task to write a software at first which would ease the process of testing and visualising my odometry algorithm.
