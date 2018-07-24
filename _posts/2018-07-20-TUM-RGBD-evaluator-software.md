@@ -5,13 +5,14 @@ author: debrup
 categories: [ RGBD , evaluator ]
 image: assets/images/evaluator.png
 featured: true
+comments:true
 ---
 
 I made this evaluator software while I was starting off to learn and write an visual odometry algorithm from scratch. So I was given the task to write a software at first which would ease the process of testing and visualising my odometry algorithm.
 
 So I came up with this software which would help the user to concentrate only on his/her odometry/SLAM algorithm without worrying about how to access the data , test the performance , accuracy and visualising their algorithm. The software does all of these for the user.
 
-This software works with the [TUM RGBD dataset](https://vision.in.tum.de/data/datasets/rgbd-dataset "RGB-D SLAM Dataset and Benchmark") . The performance(speed) of the users' algorithm is tested on the basis of the Real-time factor and the accuracy of the algorithm is computed on the basis of Absolute Trajectory Error. Both these parameters are shown dynamically on the GUI . Also the predicted and actual(groundtruth) positions are visualized simultaneously on a graph widget for comparing them visually.
+This software works with the [TUM RGBD dataset](https://vision.in.tum.de/data/datasets/rgbd-dataset "RGB-D SLAM Dataset and Benchmark") . The performance(speed) of the users' algorithm is tested on the basis of the Real-time factor and the accuracy of the algorithm is computed on the basis of **Absolute Trajectory Error**. Both these parameters are shown dynamically on the GUI . Also the predicted and actual(groundtruth) positions are visualized simultaneously on a graph widget for comparing them visually.
 
 The software is open-sourced and available in my [Github Repo](https://github.com/dattadebrup/TUM-RGBD-odometry-evaluator "TUM-RGBD-odometry-evaluator") . Details instruction on how to download and run this software is provided there.
 
