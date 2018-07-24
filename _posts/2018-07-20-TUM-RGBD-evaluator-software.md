@@ -21,9 +21,10 @@ Here is a video showing the working of the software while running a Monocular Vi
 <iframe width="711" height="400" src="https://www.youtube.com/embed/2coEdSWuACA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
+
 ### Discussion of the API's of the software:-
 
-The software has simple yet flexible API's to access datas of various sensors according to users' will from the ROSbag file of the dataset .
+The software has simple yet flexible API's to access datas from various sensors according to users' will from the ROSbag file of the dataset .
 
 User's will be able to access various sensor's data according to their need.
 
@@ -56,7 +57,7 @@ and the timestamp of the Depth Image as follows:-
 ```depth_image_t = data.depth_img_t```
 
 
-Similiarly to get the readings of other sensors the required sensors name has to be mentioned while calling ```data = self.getReadings()``` seperated by commas(,). 
+**Similiarly** to get the readings of other sensors the required sensors name has to be mentioned while calling ```data = self.getReadings()```  seperated by commas (,). 
 
 ```data.color_img``` - for RGB color image and ```data.color_img_t``` for its timestamp.
 ```data.depth_img``` - for depth image and ```data.depth_img_t``` for its timestamp.
@@ -65,7 +66,7 @@ Similiarly to get the readings of other sensors the required sensors name has to
 ```data.orientation``` - for orientation data and ```data.orientation_t``` for its timestamp.
 
 ```data.scan``` - for laser scan data and ```data.scan_t``` for its timestamp.
-(You can mention as many as sensors during calling the method).
+(You can mention as many as sensors names during calling the method).
 
 *  **So how does datas from multiple sensors are read and provided to the users by the ```self.getReadings()``` method?**
 
