@@ -7,16 +7,16 @@ image: assets/images/evaluator.png
 featured: true
 ---
 
-I made this evaluator software while I was starting off to learn and write an visual odometry algorithm from scratch. So I was given the task to write a software at first which would ease the process of testing and visualising my odometry algorithm.
+I made this evaluator software while I was starting off to learn and write an visual odometry algorithm from scratch. So I was given the task by my mentor at [JdeRobot](https://jderobot.org/)to write a software at first which would ease the process of testing and visualising my odometry algorithm.
 
 So I came up with this software which would help the user to concentrate only on his/her odometry/SLAM algorithm without worrying about how to access the data , test the performance , accuracy and visualising their algorithm. The software does all of these for the user.
 
-This software works with the [TUM RGBD dataset](https://vision.in.tum.de/data/datasets/rgbd-dataset "RGB-D SLAM Dataset and Benchmark") . The performance(speed) of the users' algorithm is tested on the basis of the Real-time factor and the accuracy of the algorithm is computed on the basis of **Absolute Trajectory Error**. Both these parameters are shown dynamically on the GUI . Also the predicted and actual(groundtruth) positions are visualized simultaneously on a graph widget for comparing them visually.
+This software works with the [TUM RGBD dataset](https://vision.in.tum.de/data/datasets/rgbd-dataset "RGB-D SLAM Dataset and Benchmark") . The performance(speed) of the users' algorithm is tested on the basis of the **Real-time factor** and the accuracy of the algorithm is computed on the basis of **Absolute Trajectory Error**. Both these parameters are shown dynamically on the GUI . Also the predicted and actual(groundtruth) positions are visualized simultaneously on a graph widget for comparing them visually.
 
 The software is open-sourced and available in my [Github Repo](https://github.com/dattadebrup/TUM-RGBD-odometry-evaluator "TUM-RGBD-odometry-evaluator") . Details instruction on how to download and run this software is provided there.
 
 
-Here is a video showing the working of the software while running a Monocular Visual odometry algorithm (about which I have discussed in my next blog post):
+Here is a video showing the working of the software while running a **Monocular Visual odometry algorithm** (about which I have discussed in my next blog post):
 
 <iframe width="711" height="400" src="https://www.youtube.com/embed/2coEdSWuACA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -24,7 +24,7 @@ Here is a video showing the working of the software while running a Monocular Vi
 
 ### Discussion of the API's of the software:-
 
-The software has simple yet flexible API's to access datas from various sensors according to users' will from the ROSbag file of the dataset .
+The software has simple yet flexible API's to access datas from various sensors according to users' will from the **ROSbag** file of the dataset .
 
 User's will be able to access various sensor's data according to their need.
 
@@ -57,7 +57,7 @@ and the timestamp of the Depth Image as follows:-
 ```depth_image_t = data.depth_img_t```
 
 
-**Similiarly** to get the readings of other sensors the required sensors name has to be mentioned while calling ```data = self.getReadings()```  seperated by commas (,). 
+**Similiarly , ** to get the readings of other sensors the required sensors name has to be mentioned while calling ```data = self.getReadings()```  seperated by commas (,). 
 
 ```data.color_img``` - for RGB color image and ```data.color_img_t``` for its timestamp.
 ```data.depth_img``` - for depth image and ```data.depth_img_t``` for its timestamp.
