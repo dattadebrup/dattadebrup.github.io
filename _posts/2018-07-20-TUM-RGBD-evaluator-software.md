@@ -57,7 +57,7 @@ and the timestamp of the Depth Image as follows:-
 ```depth_image_t = data.depth_img_t```
 
 
-**Similiarly , ** to get the readings of other sensors the required sensors name has to be mentioned while calling ```data = self.getReadings()```  seperated by commas (,). 
+**Similiarly ,** to get the readings of other sensors the required sensors name has to be mentioned while calling ```data = self.getReadings()```  seperated by commas (,). 
 
 ```data.color_img``` - for RGB color image and ```data.color_img_t``` for its timestamp.
 ```data.depth_img``` - for depth image and ```data.depth_img_t``` for its timestamp.
