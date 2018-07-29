@@ -158,9 +158,6 @@ $$
 
 So here is the result:
 
-<iframe src="https://drive.google.com/file/d/1b5XrDRQAYvt-L9xiIgR5THyBE115HJL6/preview" width="640" height="480"></iframe>
-
-
 <iframe width="711" height="400" src="https://www.youtube.com/embed/E4e83xLQQ5Q" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
