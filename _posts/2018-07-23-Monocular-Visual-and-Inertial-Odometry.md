@@ -39,67 +39,67 @@ Anyways I will be explaining my approach to the Monocular Visual Odometry algori
 1) Detect features from the first available image using FAST algorithm.
 
 
-	```python
-	fast = cv2.FastFeatureDetector_create()
-	fast.setThreshold(fast_threshold) # set the threshold parameter
-	keypoints_prev = fast.detect(color_img,None)
-	```
+```python
+fast = cv2.FastFeatureDetector_create()
+fast.setThreshold(fast_threshold) # set the threshold parameter
+keypoints_prev = fast.detect(color_img,None)
+```
 
 2) Track the detected features in the next available image using Lucas-Kanade Optical Flow Algorithm.
 
 
-	```python
-	img_new_gray = cv2.cvtColor(img_new_color , cv2.COLOR_BGR2GRAY) # first grayscale the image
-	lk_params = dict( winSize  = (50,50),
-                  maxLevel = 30,
-                  criteria = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03)) # mention the Optical Flow Algorithm parameters
-	keypoints_new, st, err = cv2.calcOpticalFlowPyrLK(img_prev_gray, img_new_gray, keypoints_prev, None, **lk_params)
-	```
+```python
+img_new_gray = cv2.cvtColor(img_new_color , cv2.COLOR_BGR2GRAY) # first grayscale the image
+lk_params = dict( winSize  = (50,50),
+              maxLevel = 30,
+              criteria = (cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03)) # mention the Optical Flow Algorithm parameters
+keypoints_new, st, err = cv2.calcOpticalFlowPyrLK(img_prev_gray, img_new_gray, keypoints_prev, None, **lk_params)
+```
 
 
 3) If the number of tracked features falls below a certain threshold:
 
 
-		```python
-		if len(keypoints_new) < certain_no_of threshold:
-		```
-			Detect features again in the previous image.
-			Track those features in the next image.
-	 	Else:
-			Continue tracking the detected features in the next images.
+```python
+if len(keypoints_new) < certain_no_of threshold:
+```
+		Detect features again in the previous image.
+		Track those features in the next image.
+ 	Else:
+		Continue tracking the detected features in the next images.
 
 
 4) Compute Essential Matrix from the corresponding points in two images using Nister's 5 Point Algorithm.
 
 
-	```python
-	essential_mat, = cv2.findEssentialMat(keypoints_prev , keypoints_new ,focal = self.fx , pp = (self.cx , self.cy), method = cv2.RANSAC ,prob=0.999, threshold=1.0) # replace with proper focal length and optical center of the camera
-	```   
+```python
+essential_mat, = cv2.findEssentialMat(keypoints_prev , keypoints_new ,focal = self.fx , pp = (self.cx , self.cy), method = cv2.RANSAC ,prob=0.999, threshold=1.0) # replace with proper focal length and optical center of the camera
+```   
 
 
 5) Recover relative camera rotation and translation from an estimated essential matrix and the corresponding points in two images, using cheirality check.
 
 
-	```python
-	_,R ,t , = cv2.recoverPose(essential_mat , keypoints_prev , keypoints_new, focal = self.fx , pp = (self.cx , self.cy)) 
-	```
+```python
+_,R ,t , = cv2.recoverPose(essential_mat , keypoints_prev , keypoints_new, focal = self.fx , pp = (self.cx , self.cy)) 
+```
 
 
 6) Triangulate the feature points from two consecutive images with the camera intrinsic matrix, rotation matrix and translation vector to reconstruct it to a 3D pointcloud.
 
 
-	``` python
-	K = np.array([[fx,0,cx],[0,fy,cy],[0,0,1]]) # set the intrinsic camera matrix
-    # The canonical matrix (set as the origin)
-    P0 = np.array([[1, 0, 0, 0],
-                   [0, 1, 0, 0],
-                   [0, 0, 1, 0]])
-    P0 = K.dot(P0)
-    # Rotated and translated using P0 as the reference point
-    P1 = np.hstack((R, t))
-    P1 = K.dot(P1)
-	cloud_new = cv2.triangulatePoints(P0, P1, point1, point2).reshape(-1, 4)[:, :3] # Triangulate the keypoints to a pointcloud and reshape it to a Nx3 3D pointcloud.
-	```
+```python
+K = np.array([[fx,0,cx],[0,fy,cy],[0,0,1]]) # set the intrinsic camera matrix
+# The canonical matrix (set as the origin)
+P0 = np.array([[1, 0, 0, 0],
+               [0, 1, 0, 0],
+               [0, 0, 1, 0]])
+P0 = K.dot(P0)
+# Rotated and translated using P0 as the reference point
+P1 = np.hstack((R, t))
+P1 = K.dot(P1)
+cloud_new = cv2.triangulatePoints(P0, P1, point1, point2).reshape(-1, 4)[:, :3] # Triangulate the keypoints to a pointcloud and reshape it to a Nx3 3D pointcloud.
+```
 
 
 7) **Compute the relative scale ->** The proper scale can then be determined from the distance ratio r between a point pair in pointcloud $X_{k-1}$  and a pair in pointcloud $X_k$ .
