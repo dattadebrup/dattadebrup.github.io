@@ -11,7 +11,7 @@ use_math: true
 ### Monocular Visual Odometry:
 
 
-Using the Evaluator Software about which I have described [here](https://dattadebrup.github.io/rgbd/evaluator/2018/07/20/TUM-RGBD-evaluator-software.html) , I attempted my first Monocular Visual Odometry algorithm. Before proceeding further let's look at the result (watch in fullscreen).
+Using the Evaluator Software about which I have described [here](https://dattadebrup.github.io/rgbd/evaluator/2018/07/20/TUM-RGBD-evaluator-software.html) , I attempted my first Monocular Visual Odometry algorithm. Before proceeding further let's look at the result \(watch in fullscreen\) .
 
 
 <iframe width="711" height="400" src="https://www.youtube.com/embed/2coEdSWuACA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -22,7 +22,7 @@ If you observe the result closely you will notice that during the initial part o
 
 * This shortcoming of this algorithm can be avoided by implemnting one or multiple of these methods:
 
-	Kalman Filter (if approximate process model can be formulated).
+	Kalman Filter \(if approximate process model can be formulated\).
 
 	Bundle Adjustment.
 
