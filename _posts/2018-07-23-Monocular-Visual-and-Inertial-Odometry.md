@@ -88,7 +88,7 @@ Anyways I will be explaining my approach to the Monocular Visual Odometry algori
 6) Triangulate the feature points from two consecutive images with the camera intrinsic matrix, rotation matrix and translation vector to reconstruct it to a 3D pointcloud.
 
 
-	```python
+	``` python
 	K = np.array([[fx,0,cx],[0,fy,cy],[0,0,1]]) # set the intrinsic camera matrix
     # The canonical matrix (set as the origin)
     P0 = np.array([[1, 0, 0, 0],
@@ -102,7 +102,7 @@ Anyways I will be explaining my approach to the Monocular Visual Odometry algori
 	```
 
 
-7) ** Compute the relative scale - > ** The proper scale can then be determined from the distance ratio r between a point pair in pointcloud $X_{k-1}$  and a pair in pointcloud $X_k$ .
+7) **Compute the relative scale ->** The proper scale can then be determined from the distance ratio r between a point pair in pointcloud $X_{k-1}$  and a pair in pointcloud $X_k$ .
 
 $$
 r = \frac{ \lvert \lvert X_{k-1,i} -  X_{k-1,j} \rvert \rvert}{ \lvert \lvert X_{k,i} -  X_{k,j} \rvert \rvert} 
