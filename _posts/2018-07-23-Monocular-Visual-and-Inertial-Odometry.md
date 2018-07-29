@@ -63,12 +63,12 @@ keypoints_new, st, err = cv2.calcOpticalFlowPyrLK(img_prev_gray, img_new_gray, k
 ```python
 if len(keypoints_new) < certain_no_of threshold:
 ```
-```
-Detect features again in the previous image.
-Track those features in the next image.
-Else:
-Continue tracking the detected features in the next images.
-```
+
+ Detect features again in the previous image.
+ Track those features in the next image.
+ Else:
+ Continue tracking the detected features in the next images.
+
 
 
 4) Compute Essential Matrix from the corresponding points in two images using Nister's 5 Point Algorithm.
