@@ -119,6 +119,7 @@ $$
 $$
 R_{robot} = RR_{robot} 
 $$
+
 $$
 t_{robot} = t_{robot} + scale * tR_{robot}
 $$
@@ -142,12 +143,15 @@ For IMU odometry I have implemented [dead reckoning](https://en.wikipedia.org/wi
 $$
 V_{avg_x} = \frac{(A_{x,t-1} + A_{x,t})}{2}  *  dt
 $$
+
 $$
 V_{avg_y} = \frac{(A_{y,t-1} + A_{y,t})}{2}  *  dt
 $$
+
 $$
 dx = V_{avg_x}  * dt
 $$
+
 $$
 dy = V_{avg_y}  * dt
 $$
