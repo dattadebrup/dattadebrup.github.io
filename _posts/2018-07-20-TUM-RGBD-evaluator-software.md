@@ -7,7 +7,7 @@ image: assets/images/evaluator.png
 featured: true
 ---
 
-I made this evaluator software while I was starting off to learn and write an visual odometry algorithm from scratch. So I was given the task by my mentor at [JdeRobot](https://jderobot.org/)to write a software at first which would ease the process of testing and visualising my odometry algorithm.
+I made this evaluator software while I was starting off to learn and write an visual odometry algorithm from scratch. So I was given the task by my mentor at [JdeRobot](https://jderobot.org/) to write a software at first which would ease the process of testing and visualising my odometry algorithm.
 
 So I came up with this software which would help the user to concentrate only on his/her odometry/SLAM algorithm without worrying about how to access the data , test the performance , accuracy and visualising their algorithm. The software does all of these for the user.
 
