@@ -8,9 +8,6 @@ featured: true
 use_math: true
 ---
 
-### Monocular Visual Odometry:
-
-
 Using the Evaluator Software about which I have described [here](https://dattadebrup.github.io/rgbd/evaluator/2018/07/20/TUM-RGBD-evaluator-software.html) , I attempted my first Monocular Visual Odometry algorithm. Before proceeding further let's look at the result (watch in fullscreen) .
 
 
@@ -20,15 +17,15 @@ Using the Evaluator Software about which I have described [here](https://dattade
 If you observe the result closely you will notice that during the initial part of the path the predicted path more or less closely follows the actual path but during the latter part of the path the predicted path deviates largely from the actual path. This is due to the fact that the error in predicting the position during each step gets cumulated in the consecutive steps resulting in increasing deviation from the groundtruth as the algorithm proceeds.
 
 
-* This shortcoming of this algorithm can be avoided by implemnting one or multiple of these methods:
+This shortcoming of this algorithm can be avoided by implemnting one or multiple of these methods:
 
-	Kalman Filter (if approximate process model can be formulated).
+	* Kalman Filter (if approximate process model can be formulated).
 
-	Bundle Adjustment.
+	* Bundle Adjustment.
 
-	Pose-graph optimization.
+	* Pose-graph optimization.
 
-	Loop closure detection.
+	* Loop closure detection.
 
 
 Anyways I will be explaining my approach to the Monocular Visual Odometry algorithm. A details treatement about the basics of Visual Odometry is available at Dr.Scaramuzza's [site](https://sites.google.com/site/scarabotix/tutorial-on-visual-odometry/) and  [here](http://www.cs.toronto.edu/~urtasun/courses/CSC2541/03_odometry.pdf).
