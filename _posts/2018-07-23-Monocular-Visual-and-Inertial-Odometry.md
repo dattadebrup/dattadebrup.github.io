@@ -18,7 +18,7 @@ Using the Evaluator Software about which I have described [here](https://dattade
 If you observe the result closely you will notice that during the initial part of the path the predicted path more or less closely follows the actual path but during the latter part of the path the predicted path deviates largely from the actual path. This is due to the fact that the error in predicting the position during each step gets cumulated in the consecutive steps resulting in increasing deviation from the groundtruth as the algorithm proceeds.
 
 
-**This** shortcoming of this algorithm can be avoided by implemnting one or multiple of these methods:
+**This** shortcoming of this algorithm can be avoided by implementing one or multiple of these methods:
 
 * Kalman Filter (if approximate process model can be formulated).
 
@@ -61,7 +61,7 @@ keypoints_new, st, err = cv2.calcOpticalFlowPyrLK(img_prev_gray, img_new_gray, k
 ```python
 if len(keypoints_new) < certain_no_of threshold:
 ```
-
+```
  Detect features again in the previous image.
 
  Track those features in the next image.
@@ -69,6 +69,7 @@ if len(keypoints_new) < certain_no_of threshold:
  Else:
 
  Continue tracking the detected features in the next images.
+```
 
 
 
@@ -76,7 +77,7 @@ if len(keypoints_new) < certain_no_of threshold:
 
 
 ```python
-essential_mat, = cv2.findEssentialMat(keypoints_prev , keypoints_new ,focal = self.fx , pp = (self.cx , self.cy), method = cv2.RANSAC ,prob=0.999, threshold=1.0) # replace with proper focal length and optical center of the camera
+essential_mat, = cv2.findEssentialMat(keypoints_prev , keypoints_new ,focal = fx , pp = (cx , cy), method = cv2.RANSAC ,prob=0.999, threshold=1.0) # replace with proper focal length and optical center of the camera
 ```   
 
 
@@ -84,7 +85,7 @@ essential_mat, = cv2.findEssentialMat(keypoints_prev , keypoints_new ,focal = se
 
 
 ```python
-_,R ,t , = cv2.recoverPose(essential_mat , keypoints_prev , keypoints_new, focal = self.fx , pp = (self.cx , self.cy)) 
+_,R ,t , = cv2.recoverPose(essential_mat , keypoints_prev , keypoints_new, focal = fx , pp = (cx , cy)) # replace with proper focal length and optical center of the camera
 ```
 
 
@@ -101,7 +102,7 @@ P0 = K.dot(P0)
 # Rotated and translated using P0 as the reference point
 P1 = np.hstack((R, t))
 P1 = K.dot(P1)
-cloud_new = cv2.triangulatePoints(P0, P1, point1, point2).reshape(-1, 4)[:, :3] # Triangulate the keypoints to a pointcloud and reshape it to a Nx3 3D pointcloud.
+cloud_new = cv2.triangulatePoints(P0, P1, point1, point2).reshape(-1, 4)[:, :3] # Triangulate the keypoints to a pointcloud and reshape it to a Nx3 shaped pointcloud.
 ```
 
 
@@ -128,10 +129,10 @@ $$
 
 **Additional Heuristics:**
 
-Since the motion of the mobile robot in question does not have any sharp turn , we will will drop the predicted Rotation and translation if the rotational angle is more than 5 degrees.
+Since the motion of the mobile robot in question does not have any sharp turn , we will will drop the predicted Rotation and translation if the rotation angle is more than 5 degrees.
 
 **Global scale:**
-If you plot the result of this above explained algorithm you will notice that the predicted path is off from the groundtruth by a constant scale factor.
+If you plot the result of this above explained algorithm you will notice that the predicted path is off by a constant scale factor  from the groundtruth.
 This is a common problem in Monocular Visual odometry as it has no intrinsic way to determine or predict the global scale . So the global scale factor has to be extracted from external information.
 
 ---------
