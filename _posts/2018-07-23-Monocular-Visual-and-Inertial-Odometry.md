@@ -9,7 +9,7 @@ use_math: true
 ---
 
 
-Using the Evaluator Software about which I have described [here](https://dattadebrup.github.io/rgbd/evaluator/2018/07/20/TUM-RGBD-evaluator-software.html) , I attempted my first Monocular Visual Odometry algorithm. Before proceeding further let's look at the result (watch in fullscreen) .
+Using the Evaluator Software about which I have described [here](https://dattadebrup.github.io/rgbd/evaluator/2018/07/20/TUM-RGBD-evaluator-software.html) , I attempted my first *Monocular Visual Odometry algorithm*. Before proceeding further let's look at the result (watch in fullscreen) .
 
 
 <iframe width="711" height="400" src="https://www.youtube.com/embed/2coEdSWuACA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -18,23 +18,23 @@ Using the Evaluator Software about which I have described [here](https://dattade
 If you observe the result closely you will notice that during the initial part of the path the predicted path more or less closely follows the actual path but during the latter part of the path the predicted path deviates largely from the actual path. This is due to the fact that the error in predicting the position during each step gets cumulated in the consecutive steps resulting in increasing deviation from the groundtruth as the algorithm proceeds.
 
 
-* This shortcoming of this algorithm can be avoided by implemnting one or multiple of these methods:
+**This** shortcoming of this algorithm can be avoided by implemnting one or multiple of these methods:
 
-	Kalman Filter (if approximate process model can be formulated).
+* Kalman Filter (if approximate process model can be formulated).
 
-	Bundle Adjustment.
+* Bundle Adjustment.
 
-	Pose-graph optimization.
+* Pose-graph optimization.
 
-	Loop closure detection.
-
-
-Anyways I will be explaining my approach to the Monocular Visual Odometry algorithm. A details treatement about the basics of Visual Odometry is available at Dr.Scaramuzza's [site](https://sites.google.com/site/scarabotix/tutorial-on-visual-odometry/) and  [here](http://www.cs.toronto.edu/~urtasun/courses/CSC2541/03_odometry.pdf).
+* Loop closure detection.
 
 
-* Here is a brief outline of the steps involved in the Monocular Visual Odometry:-
+Anyways I will be explaining my approach to the Monocular Visual Odometry algorithm. A details treatement about the basics of *Visual Odometry* is available at Dr.Scaramuzza's [site](https://sites.google.com/site/scarabotix/tutorial-on-visual-odometry/) and  [here](http://www.cs.toronto.edu/~urtasun/courses/CSC2541/03_odometry.pdf).
 
-1) Detect features from the first available image using FAST algorithm.
+
+* **Here** is a brief outline of the steps involved in the Monocular Visual Odometry:-
+
+1) *Detect* features from the first available image using FAST algorithm.
 
 
 ```python
@@ -43,7 +43,7 @@ fast.setThreshold(fast_threshold) # set the threshold parameter
 keypoints_prev = fast.detect(color_img,None)
 ```
 
-2) Track the detected features in the next available image using Lucas-Kanade Optical Flow Algorithm.
+2) *Track* the detected features in the next available image using Lucas-Kanade Optical Flow Algorithm.
 
 
 ```python
@@ -63,13 +63,16 @@ if len(keypoints_new) < certain_no_of threshold:
 ```
 
  Detect features again in the previous image.
+
  Track those features in the next image.
+
  Else:
+
  Continue tracking the detected features in the next images.
 
 
 
-4) Compute Essential Matrix from the corresponding points in two images using Nister's 5 Point Algorithm.
+4) *Compute* Essential Matrix from the corresponding points in two images using Nister's 5 Point Algorithm.
 
 
 ```python
@@ -77,7 +80,7 @@ essential_mat, = cv2.findEssentialMat(keypoints_prev , keypoints_new ,focal = se
 ```   
 
 
-5) Recover relative camera rotation and translation from an estimated essential matrix and the corresponding points in two images, using cheirality check.
+5) *Recover* relative camera rotation and translation from an estimated essential matrix and the corresponding points in two images, using cheirality check.
 
 
 ```python
@@ -85,7 +88,7 @@ _,R ,t , = cv2.recoverPose(essential_mat , keypoints_prev , keypoints_new, focal
 ```
 
 
-6) Triangulate the feature points from two consecutive images with the camera intrinsic matrix, rotation matrix and translation vector to reconstruct it to a 3D pointcloud.
+6) *Triangulate* the feature points from two consecutive images with the camera intrinsic matrix, rotation matrix and translation vector to reconstruct it to a 3D pointcloud.
 
 
 ```python
@@ -112,7 +115,7 @@ $$
 > For robustness, the scale ratios for many point pairs are computed and the mean (or in presence of outliers, the median) is used.
 
 
-8) Concatenate the Rotation and Translational matrix along with the relative scale to obtain the predicted path.
+8) *Concatenate* the Rotation and Translational matrix along with the relative scale to obtain the predicted path.
 
 $$
 R_{robot} = RR_{robot} 
