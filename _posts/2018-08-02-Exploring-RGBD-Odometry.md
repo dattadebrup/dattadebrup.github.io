@@ -77,6 +77,8 @@ for v in range(depth_image.height):
 
 $ M_{i , j}   =  1   $ if the eucledian distance between point pair i and j is below a certain very            small threshold value.
 $ \\ $
+
+
 $ \ \ \ \ \ \ \ =   0  $  otherwise.
 
 This step helps in detection and extraction of inlier points from the generated poinclouds and prune away bad matches. This step is valid if the environment of the robot has no moving objects as it assumes the surrounding environment to be a rigid body. For more robust inlier detection , a graph data structure can be generated using the accepted inlier feature points from the the consistency matrix as nodes and an edge is formed between two such pairs of matched feature if the 3D distance between the features does not change substantially (i.e. whose value is 1 in the consistency matrix). Then the maximum [clique](https://en.wikipedia.org/wiki/Clique_(graph_theory)) from the graph is to be computed. Finding maximum clique from an arbitrary graph is a NP-hard problem , so for speed optimization appropiate heuristic algorithm has to be applied. This will give more robust set of inlier points from the pointclouds with the additional cost of more computation power.
