@@ -15,7 +15,7 @@ So if Depth image is available to the user along with the RGB image then the glo
 
 **For testing the performance , accuracy and visualising the odometry algorithm I have used this [software](https://dattadebrup.github.io/rgbd/evaluator/2018/07/20/TUM-RGBD-evaluator-software.html).**
 
-1) *Detect* features from the first available RGB image using FAST algorithm.
+1) *Detect* features from the first available RGB image using **FAST algorithm**.
 
 
 ```python
@@ -24,7 +24,7 @@ fast.setThreshold(fast_threshold) # set the threshold parameter
 keypoints_prev = fast.detect(color_img,None)
 ```
 
-2) *Track* the detected features in the next available RGB image using Lucas-Kanade Optical Flow Algorithm.
+2) *Track* the detected features in the next available RGB image using **Lucas-Kanade Optical Flow Algorithm**.
 
 
 ```python
@@ -54,7 +54,7 @@ if len(keypoints_new) < certain_no_of threshold:
 ```
 
 
-4) *Create* the 3D pointcloud (of the tracked/detected feature points) of the latest two available RGB image with the help of their depth image . (Make sure that both the pointclouds has same number of feature points.)
+4) *Create* the 3D **pointcloud** (of the tracked/detected feature points) of the latest two available RGB image with the help of their depth image . (Make sure that both the pointclouds has same number of feature points.)
 
 
 ```python
@@ -83,7 +83,7 @@ $ \ \ \ \ \ \ \ =   0  $  otherwise.
 
 This step helps in detection and extraction of inlier points from the generated poinclouds and prune away bad matches. This step is valid if the environment of the robot has no moving objects as it assumes the surrounding environment to be a rigid body. For more robust inlier detection , a graph data structure can be generated using the accepted inlier feature points from the the consistency matrix as nodes and an edge is formed between two such pairs of matched feature if the 3D distance between the features does not change substantially (i.e. whose value is 1 in the consistency matrix). Then the maximum [clique](https://en.wikipedia.org/wiki/Clique_(graph_theory)) from the graph is to be computed. Finding maximum clique from an arbitrary graph is a NP-hard problem , so for speed optimization appropiate heuristic algorithm has to be applied. This will give more robust set of inlier points from the pointclouds with the additional cost of more computation power.
 
-6) *Estimation* of motion from the set of inlier points. Since the surrounding environment of the robot is immobile , we can use Least-Squares Rigid body motion using [SVD](https://en.wikipedia.org/wiki/Singular-value_decomposition) to compute the best-fitting rigid transformation that aligns and outputs Rotation and Translation matrix between two sets of corresponding points of their pointclouds. The steps invloved are:
+6) *Estimation* of motion from the set of inlier points. Since the surrounding environment of the robot is immobile , we can use **Least-Squares Rigid body motion** using **[SVD](https://en.wikipedia.org/wiki/Singular-value_decomposition)** to compute the best-fitting rigid transformation that aligns and outputs Rotation and Translation matrix between two sets of corresponding points of their pointclouds. The steps invloved are:
 
   * Compute the centroids of both point sets:
 

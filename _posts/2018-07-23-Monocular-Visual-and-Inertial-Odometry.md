@@ -34,7 +34,7 @@ Anyways I will be explaining my approach to the Monocular Visual Odometry algori
 
 * **Here** is a brief outline of the steps involved in the Monocular Visual Odometry:-
 
-1) *Detect* features from the first available image using FAST algorithm.
+1) *Detect* features from the first available image using **FAST algorithm**.
 
 
 ```python
@@ -43,7 +43,7 @@ fast.setThreshold(fast_threshold) # set the threshold parameter
 keypoints_prev = fast.detect(color_img,None)
 ```
 
-2) *Track* the detected features in the next available image using Lucas-Kanade Optical Flow Algorithm.
+2) *Track* the detected features in the next available image using **Lucas-Kanade Optical Flow Algorithm**.
 
 
 ```python
