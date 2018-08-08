@@ -54,7 +54,7 @@ if len(keypoints_new) < certain_no_of threshold:
 ```
 
 
-4) Create the 3D pointcloud (of the tracked/detected feature points) of the latest two available RGB image with the help of their depth image . (Make sure that both the pointclouds has same number of feature points.)
+4) *Create* the 3D pointcloud (of the tracked/detected feature points) of the latest two available RGB image with the help of their depth image . (Make sure that both the pointclouds has same number of feature points.)
 
 
 ```python
@@ -73,15 +73,17 @@ for v in range(depth_image.height):
     Y = (v - cy) * Z / fy;
 ```
 
-5) Create a Consistency matrix for each of the two consecutive poinclouds.Consistency matrix is a NxN matrix (where N is the number of features points in the pointcloud.) such that :-
+5) *Create* a **Consistency matrix** for each of the two consecutive poinclouds.Consistency matrix is a NxN matrix (where N is the number of features points in the pointcloud.) such that :-
 
-$M_{i , j}   =  1   $ if the eucledian distance between point pair i and j is below a certain very small threshold value.
+$M_{i , j}   =  1   $ if the eucledian distance between point pair i and j is below a certain very            small threshold value.
 $ \\ $
+
+
 $ \ \ \ \ \ \ \ =   0  $  otherwise.
 
 This step helps in detection and extraction of inlier points from the generated poinclouds and prune away bad matches. This step is valid if the environment of the robot has no moving objects as it assumes the surrounding environment to be a rigid body. For more robust inlier detection , a graph data structure can be generated using the accepted inlier feature points from the the consistency matrix as nodes and an edge is formed between two such pairs of matched feature if the 3D distance between the features does not change substantially (i.e. whose value is 1 in the consistency matrix). Then the maximum [clique](https://en.wikipedia.org/wiki/Clique_(graph_theory)) from the graph is to be computed. Finding maximum clique from an arbitrary graph is a NP-hard problem , so for speed optimization appropiate heuristic algorithm has to be applied. This will give more robust set of inlier points from the pointclouds with the additional cost of more computation power.
 
-6) Estimation of motion from the set of inlier points. Since the surrounding environment of the robot is immobile , we can use Least-Squares Rigid body motion using [SVD](https://en.wikipedia.org/wiki/Singular-value_decomposition) to compute the best-fitting rigid transformation that aligns and outputs Rotation and Translation matrix between two sets of corresponding points of their pointclouds. The steps invloved are:
+6) *Estimation* of motion from the set of inlier points. Since the surrounding environment of the robot is immobile , we can use Least-Squares Rigid body motion using [SVD](https://en.wikipedia.org/wiki/Singular-value_decomposition) to compute the best-fitting rigid transformation that aligns and outputs Rotation and Translation matrix between two sets of corresponding points of their pointclouds. The steps invloved are:
 
   * Compute the centroids of both point sets:
 
@@ -122,7 +124,7 @@ $$
 t= \bar q - R \bar p
 $$
 
-** Python  implementation of Least-Squares Rigid Motion Using SVD : **
+**Python  implementation of Least-Squares Rigid Motion Using SVD :**
 
 
 ```python 
