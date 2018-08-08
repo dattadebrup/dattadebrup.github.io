@@ -12,7 +12,7 @@ use_math: true
 Using the Evaluator Software about which I have described [here](https://dattadebrup.github.io/rgbd/evaluator/2018/07/20/TUM-RGBD-evaluator-software.html) , I attempted my first *Monocular Visual Odometry algorithm*. Before proceeding further let's look at the result (watch in fullscreen) .
 
 
-<iframe width="711" height="400" src="https://www.youtube.com/embed/2coEdSWuACA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="711" height="400" src="https://www.youtube.com/embed/2coEdSWuACA?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 If you observe the result closely you will notice that during the initial part of the path the predicted path more or less closely follows the actual path but during the latter part of the path the predicted path deviates largely from the actual path. This is due to the fact that the error in predicting the position during each step gets cumulated in the consecutive steps resulting in increasing deviation from the groundtruth as the algorithm proceeds.
@@ -160,7 +160,7 @@ $$
 
 So here is the result:
 
-<iframe width="711" height="400" src="https://www.youtube.com/embed/E4e83xLQQ5Q" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="711" height="400" src="https://www.youtube.com/embed/E4e83xLQQ5Q?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 In my next blog post I will try to produce better result by fusing the visual estimate and IMU estimate using Kalman filter.

@@ -161,8 +161,7 @@ Since the motion of the mobile robot in question does not have any sharp turn , 
 
 Let's look at the video running this algorithm.
 
-
-<video>
+<iframe width="711" height="400" src="https://www.youtube.com/embed/OqtmgNGzEZM?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 This is definitely not a robust RGBD odometry algorithm but it will give you a basic idea about the primary steps involved in a RGBD odometry algorithm.

@@ -18,7 +18,7 @@ The software is open-sourced and available in my [Github Repo](https://github.co
 
 Here is a video showing the working of the software while running a **Monocular Visual odometry algorithm** (about which I have discussed in my [next](https://dattadebrup.github.io/monocular/inertial/odometry/2018/07/23/Monocular-Visual-and-Inertial-Odometry.html) blog post):
 
-<iframe width="711" height="400" src="https://www.youtube.com/embed/2coEdSWuACA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="711" height="400" src="https://www.youtube.com/embed/2coEdSWuACA?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 
