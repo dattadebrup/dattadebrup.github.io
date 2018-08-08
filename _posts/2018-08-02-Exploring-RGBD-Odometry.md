@@ -10,7 +10,7 @@ use_math: true
 
 In my previous blog [post](https://dattadebrup.github.io/monocular/inertial/odometry/2018/07/23/Monocular-Visual-and-Inertial-Odometry.html) I have explained the basic steps involved in a Monocular Visual Odmetry algorithm. But the major drawback in the Monocular visual odometry is that prior global scale information has to be provided . 
 
-So if Depth image is available to the user along with the RGB image then the global scale information can be obtained from the depth image. I will explain the basic pipeline involved in pose prediction using RGBD odometry algorithm based on this paper[^2].
+So if Depth image is available to the user along with the RGB image then the global scale information can be obtained from the depth image. I will explain the basic pipeline involved in pose prediction using RGBD odometry algorithm based on this paper[^1].
 (Remember the color and depth image should be pre-registered.)
 
 **For testing the performance , accuracy and visualising the odometry algorithm I have used this [software](https://dattadebrup.github.io/rgbd/evaluator/2018/07/20/TUM-RGBD-evaluator-software.html).**
@@ -142,7 +142,7 @@ t = np.reshape(t, (3,1))
 ```
 
 
-A more details mathematical treatement and proof of this method can be found here[^1].
+A more details mathematical treatement and proof of this method can be found here[^2].
 
 7) *Concatenate* the Rotation and Translational matrix along with the relative scale to obtain the predicted path.
 
@@ -168,10 +168,10 @@ This is definitely not a robust RGBD odometry algorithm but it will give you a b
 A state-of-the-art and robust algorithm for RGBD odometry is implemented within OpenCV library[^3]. I will try to implement this and explain about it in my next blog post.
 
 
-###References:-
+### References:-
 
-[^1]: [Least-Squares Rigid Motion Using SVD](https://igl.ethz.ch/projects/ARAP/svd_rot.pdf)
-[^2]: [Visual Odometry and Mapping for Autonomous
-Flight Using an RGB-D Camera](https://link.springer.com/chapter/10.1007/978-3-319-29363-9_14)
+[^1]: [Visual Odometry and Mapping for Autonomous Flight Using an RGB-D Camera](https://link.springer.com/chapter/10.1007/978-3-319-29363-9_14)
+
+[^2]: [Least-Squares Rigid Motion Using SVD](https://igl.ethz.ch/projects/ARAP/svd_rot.pdf)
 
 [^3]: [RgbdOdometry Class Reference](https://docs.opencv.org/3.4/d0/d60/classcv_1_1rgbd_1_1RgbdOdometry.html)
