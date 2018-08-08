@@ -129,7 +129,7 @@ $$
 
 **Additional Heuristics:**
 
-Since the motion of the mobile robot in question does not have any sharp turn , we will will drop the predicted Rotation and translation if the rotation angle is more than 5 degrees.
+Since the motion of the mobile robot in question does not have any sharp turn , we will will drop the predicted Rotation and translation if the rotation angle is more than 5 degrees in a single step.Also if the predicted translation vector moves in backward direction we will drop that prediction.
 
 **Global scale:**
 If you plot the result of this above explained algorithm you will notice that the predicted path is off by a constant scale factor  from the groundtruth.
