@@ -146,7 +146,7 @@ t = np.reshape(t, (3,1))
 
 A more details mathematical treatement and proof of this method can be found here[^2].
 
-7) *Concatenate* the Rotation and Translational matrix along with the relative scale to obtain the predicted path.
+7) *Concatenate* the Rotation and Translational matrix to obtain the predicted path.
 
 $$
 R_{robot} = RR_{robot} 
