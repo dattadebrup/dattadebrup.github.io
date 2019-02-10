@@ -73,7 +73,7 @@ for v in range(depth_image.height):
     Y = (v - cy) * Z / fy;
 ```
 
-5) *Create* a **Consistency matrix** for each of the two consecutive poinclouds.Consistency matrix is a NxN matrix (where N is the number of features points in the pointcloud.) such that :-
+5) *Create* one **Consistency matrix** for each pair of the consecutive poinclouds. Consistency matrix is a NxN matrix (where N is the number of features points in the pointcloud.) such that :-
 
 $ M_{i , j}   =  1   $ if the eucledian distance between point pair i and j is below a certain very            small threshold value.
 $ \\ $
